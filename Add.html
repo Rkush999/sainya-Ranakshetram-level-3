@@ -1,0 +1,76 @@
+{% load static %}
+<html>
+<head>
+ <!-- Auxiliary tags -->
+    <title>mtcs20ck Search Engine | Add URL</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description"
+        content="Welcome to our technical blog, here you will find topics related to cyber-security, data science and machine learning. There are write-ups, technical articles, how tos, fundamentals and lot more topics, that would be of your interest.">
+    <meta name="theme-color" content="#192734">
+    <!-- Auxiliary tags Ends -->
+    <!-- Third party CSS and JS -->
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- Jquery Ends-->
+
+    <!-- Bootstrap CSS and JS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+    <!-- Bootstrap CSS and JS Ends -->
+
+    <!-- animate starts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <!-- animate ends -->
+
+    <!-- Font awesome CDN -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <!-- Font awesome CDN ends -->
+
+    <!-- Graph cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <!-- Graph cdn ends -->
+
+    <!-- Third party CSS and JS ends -->
+
+    <!-- Custom CSS and JS -->
+    <!-- Custom CSS and JS ends -->
+</head>
+<body>
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-md" style="text-align: center">
+            <h1>mtcs20ck Search Engine | Add URL</h1>
+        </div>
+    </div>
+    <br />
+    <br />
+    <div class="row">
+        <div class="col" style="text-align: center">
+            <form method="POST" action="">
+                <input type="text" placeholder="http://example.com/" name="url" id="url">
+                <input type="submit" placeholder="Go" name="index" value="Index It!!">
+                {% csrf_token %}
+            </form>
+        </div>
+    </div>
+    {% if result.status %}
+        <script>
+            alert("My crawler will index this site, visit later to find it indexed");
+            window.location.replace("/");
+        </script>
+    {% else %}
+        <script>
+            alert("There has been an error, kindly check your input.");
+            document.getElementById("url").value = {{ url }};
+        </script>
+    {% endif %}
+</body>
+</html>
